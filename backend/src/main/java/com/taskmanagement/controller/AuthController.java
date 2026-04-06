@@ -29,14 +29,19 @@ public class AuthController {
     }
 
     @PostMapping("/login")
-    public ResponseEntity<?> login(@Valid @RequestBody LoginRequest request) {
-        try {
-            AuthResponse response = authService.login(request);
-            return ResponseEntity.ok(response);
-        } catch (Exception e) {
-            return ResponseEntity.badRequest().body(new ErrorResponse("Invalid username or password"));
-        }
+public ResponseEntity<?> login(@Valid @RequestBody LoginRequest request) {
+    try {
+        AuthResponse response = authService.login(request);
+
+        return ResponseEntity.ok(
+            java.util.Collections.singletonMap("token", response.getToken())
+        );
+
+    } catch (Exception e) {
+        return ResponseEntity.badRequest()
+                .body(new ErrorResponse("Invalid username or password"));
     }
+}
 
     public static class ErrorResponse {
         private final String message;
