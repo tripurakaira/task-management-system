@@ -82,7 +82,7 @@ export async function getTasks(status?: Task['status']): Promise<Task[]> {
     if (res.status === 401 || res.status === 403) {
       return [] 
     }
-    throw new Error('Failed to fetch tasks')
+    throw new Error('')
   }
 
   return res.json()
@@ -90,7 +90,7 @@ export async function getTasks(status?: Task['status']): Promise<Task[]> {
 
 export async function getTask(id: number): Promise<Task> {
   const res = await fetch(`${API_BASE}/tasks/${id}`, { headers: getAuthHeaders() })
-  if (!res.ok) throw new Error('Failed to fetch task')
+  if (!res.ok) throw new Error('')
   return res.json()
 }
 
