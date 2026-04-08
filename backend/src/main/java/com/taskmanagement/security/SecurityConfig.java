@@ -68,7 +68,7 @@ public class SecurityConfig {
             .authorizeRequests()
             .antMatchers("/api/auth/**").permitAll()
             .antMatchers(HttpMethod.OPTIONS, "/**").permitAll()
-            .anyRequest().permitAll() // 👈 changed
+            .anyRequest().permitAll() 
             .and()
             .authenticationProvider(authenticationProvider());
 
