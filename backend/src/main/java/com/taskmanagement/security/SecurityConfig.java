@@ -78,7 +78,7 @@ public class SecurityConfig {
     public CorsConfigurationSource corsConfigurationSource() {
         CorsConfiguration configuration = new CorsConfiguration();
         configuration.setAllowedOrigins(Arrays.asList(
-        "https://task-management-system-1-mqv6.onrender.com",
+        "https://task-management-frontend-c00p.onrender.com",
         "http://localhost:5173"
 ));
         configuration.setAllowedHeaders(Arrays.asList("*"));
