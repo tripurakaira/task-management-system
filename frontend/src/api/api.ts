@@ -78,7 +78,13 @@ export interface TaskRequest {
 export async function getTasks(status?: Task['status']): Promise<Task[]> {
   const url = status ? `${API_BASE}/tasks?status=${status}` : `${API_BASE}/tasks`
   const res = await fetch(url, { headers: getAuthHeaders() })
-  if (!res.ok) throw new Error('Failed to fetch tasks')
+  if (!res.ok) {
+    if (res.status === 401 || res.status === 403) {
+      return [] 
+    }
+    throw new Error('Failed to fetch tasks')
+  }
+
   return res.json()
 }
 
